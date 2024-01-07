@@ -1,0 +1,4 @@
+# Global .gitignore
+
+.env
+/.vscode
