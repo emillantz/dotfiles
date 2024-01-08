@@ -28,12 +28,12 @@ require("lazy").setup({
     require('emillantz.lsp').lazy,
     require('emillantz.rust').lazy,
     require('emillantz.treesitter').lazy,
-    {'github/copilot.vim'},
     {
         'windwp/nvim-autopairs',
         event = 'InsertEnter',
         opts = {},
     },
+    {'github/copilot.vim'},
 }, {})
 
 require('emillantz.telescope').configure()

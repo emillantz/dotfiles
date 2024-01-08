@@ -18,4 +18,9 @@ vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
 vim.keymap.set('n', '<leader>fg', builtin.git_files, {})
 
 --copilot
-vim.keymap.set('i', '<C-Space>', '<Plug>(copilot-dismiss)')
+vim.keymap.set('i', '<C-z>', '<Plug>(copilot-dismiss)')
+vim.keymap.set('i', '<C-l>', 'copilot#Accept("")', {
+    expr = true,
+    replace_keycodes = false
+})
+vim.g.copilot_no_tab_map = true
