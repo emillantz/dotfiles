@@ -35,10 +35,33 @@ M.servers = function()
             filetypes = vim.tbl_keys(efmLangs),
         },
 
-        clangd = {},
+        clangd = {
+            cmd = {
+                "clangd",
+                "--offset-encoding=utf-16"
+            }
+        },
         cmake = {},
         gopls = {},
-        pyright = {},
+        pyright = {
+            settings = {
+                pyright = {
+                    disableOrganizeImports = true,
+                },
+                python = {
+                    analysis = {
+                        ignore = { '*' }
+                    }
+                }
+            }
+        },
+        ruff = {
+            init_options = {
+                settings = {
+                    logLevel = "debug",
+                }
+            }
+        },
         elixirls = {},
         bashls = {},
         dockerls = {},

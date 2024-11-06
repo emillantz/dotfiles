@@ -24,6 +24,7 @@ require("lazy").setup({
     {'HiPhish/rainbow-delimiters.nvim'},
     {'tpope/vim-fugitive'},
     {'mbbill/undotree'},
+    {'SmiteshP/nvim-navic'},
     require('emillantz.telescope').lazy,
     require('emillantz.lsp').lazy,
     require('emillantz.rust').lazy,

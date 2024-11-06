@@ -118,19 +118,24 @@ M.configure = function()
             require('nvim-navic').attach(client, buf)
         end
 
+        if client.name == 'ruff' then
+            client.server_capabilities.hoverProvider = false
+        end
+
         nmap('<leader>gd', vim.lsp.buf.definition, '[g]o to [d]efinition')
         nmap('<leader>gD', vim.lsp.buf.declaration, '[go] to [Declaration]')
 
         nmap('<leader>gi', vim.lsp.buf.implementation, '[g]o to [i]mplementation')
 
         if client.server_capabilities.documentFormattingProvider then
-            nmap('<leader>lf', vim.lsp.buf.format(), '[l]sp [f]ormat')
+            --nmap('<leader>fl', vim.lsp.buf.format(), '[l]sp [f]ormat')
         end
 
-        vim.keymap.set('n', '<leader>ld', vim.diagnostic.goto_next, { desc = '[l]ookup next [d]iagnostic' })
-        vim.keymap.set('n', '<leader>lD', vim.diagnostic.goto_prev, { desc = '[l]ookup previous [D]iagnostic' })
+        vim.keymap.set('n', '<leader>d', vim.diagnostic.goto_next, { desc = 'lookup next [d]iagnostic' })
+        vim.keymap.set('n', '<leader>D', vim.diagnostic.goto_prev, { desc = 'lookup previous [D]iagnostic' })
 
         vim.keymap.set('n', '<leader>gl', vim.diagnostic.open_float, { desc = 'open diagnostic' })
+
     end
 
     require('neodev').setup()
