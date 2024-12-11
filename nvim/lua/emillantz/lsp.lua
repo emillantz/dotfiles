@@ -147,7 +147,9 @@ M.configure = function()
     local servers = require('emillantz.servers').servers()
 
     require('mason-lspconfig').setup({
-        ensure_installed = servers
+        automatic_installation=true,
+        ensure_installed = servers,
+        PATH = "prepend",
     })
 
     for server, config in pairs(servers) do

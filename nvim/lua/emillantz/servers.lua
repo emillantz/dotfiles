@@ -43,18 +43,7 @@ M.servers = function()
         },
         cmake = {},
         gopls = {},
-        pyright = {
-            settings = {
-                pyright = {
-                    disableOrganizeImports = true,
-                },
-                python = {
-                    analysis = {
-                        ignore = { '*' }
-                    }
-                }
-            }
-        },
+        basedpyright = {},
         ruff = {
             init_options = {
                 settings = {
