@@ -42,7 +42,7 @@ M.servers = function()
             }
         },
         cmake = {},
-        gopls = {},
+        --gopls = {},
         basedpyright = {},
         ruff = {
             init_options = {

@@ -17,7 +17,11 @@ M.configure = function()
     table.insert(args, '--glob')
     table.insert(args, '!**/.git/*')
 
-    telescope.setup({})
+    telescope.setup({
+        defaults = {
+            file_ignore_patterns = { '.git/', 'node_modules/', 'target' },
+        }
+    })
 end
 
 return M

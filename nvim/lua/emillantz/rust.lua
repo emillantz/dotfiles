@@ -10,12 +10,13 @@ M.lazy = {
     },
     {
         "mrcjkb/rustaceanvim",
-        version = "^3",
+        version = "^5",
         dependencies = {
             "nvim-lua/plenary.nvim",
             "mfussenegger/nvim-dap",
             {
-                "lvimuser/lsp-inlayhints.nvim",
+                "chrisgrieser/nvim-lsp-endhints",
+                event = "LspAttach",
                 opts = {}
             },
         },
@@ -27,13 +28,52 @@ M.lazy = {
                         auto_focus = true,
                     },
                 },
+                lsp = {
+                    ClientOpts = {
+                        load_vscode_settings = false,
+                    }
+                },
                 server = {
                     on_attach = function(client, bufnr)
-                        local hints = require('lsp-inlayhints')
-                        hints.setup({})
-                        hints.on_attach(client, bufnr)
-                        hints.show()
-                    end
+                        local hints = require('lsp-endhints')
+                        hints.setup({
+                            icons = {
+                                type = "→ ",
+                                parameter = "| ",
+                                offspec = "",
+                                unknown = "",
+                            },
+                            label = {
+                                truncateAtChars = 35,
+                                padding = 1,
+                                marginLeft = 0,
+                                sameKindSeparator = ", "
+                            },
+                            extmark = {
+                                priority = 50,
+                            },
+                            autoEnableHints = true,
+                        })
+                        vim.keymap.set(
+                            "n",
+                            "<leader>cd",
+                            function()
+                                vim.cmd.RustLsp('openDocs')
+                            end
+                        )
+                    end,
+                    diagnostic = {
+                        refreshSupport = false,
+                    },
+                    default_settings = {
+                        ['rust-analyzer'] = {
+                            check = {
+                                command = "clippy",
+                                extraArgs = {"--", "-W", "clippy::style"}
+                            },
+                            linkedProjects = nil
+                        }
+                    }
                 }
             }
         end

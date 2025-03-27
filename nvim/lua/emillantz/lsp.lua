@@ -131,10 +131,16 @@ M.configure = function()
             --nmap('<leader>fl', vim.lsp.buf.format(), '[l]sp [f]ormat')
         end
 
-        vim.keymap.set('n', '<leader>d', vim.diagnostic.goto_next, { desc = 'lookup next [d]iagnostic' })
-        vim.keymap.set('n', '<leader>D', vim.diagnostic.goto_prev, { desc = 'lookup previous [D]iagnostic' })
+        vim.keymap.set('n', '<leader>d', function()
+            vim.diagnostic.jump { count=1, float=true }
+        end)
+        vim.keymap.set('n', '<leader>D', function()
+            vim.diagnostic.jump { count=-1, float=true }
+        end)
 
         vim.keymap.set('n', '<leader>gl', vim.diagnostic.open_float, { desc = 'open diagnostic' })
+
+        vim.diagnostic.config({ virtual_text = true })
 
     end
 
@@ -143,6 +149,7 @@ M.configure = function()
     local lspconfig = require('lspconfig')
     local capabilities = vim.lsp.protocol.make_client_capabilities()
     capabilities.textDocument.completion.completionItem.snippetSupport = true
+    capabilities.general.positionEncodings = {'utf-16'}
 
     local servers = require('emillantz.servers').servers()
 
