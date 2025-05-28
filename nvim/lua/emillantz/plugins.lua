@@ -35,7 +35,7 @@ require("lazy").setup({
         event = 'InsertEnter',
         opts = {},
     },
-    --{'github/copilot.vim'},
+    {'github/copilot.vim'},
 }, {})
 
 require('emillantz.telescope').configure()
