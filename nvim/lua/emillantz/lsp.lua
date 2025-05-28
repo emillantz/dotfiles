@@ -126,6 +126,7 @@ M.configure = function()
         nmap('<leader>gD', vim.lsp.buf.declaration, '[go] to [Declaration]')
 
         nmap('<leader>gi', vim.lsp.buf.implementation, '[g]o to [i]mplementation')
+        nmap('<leader>ca', vim.lsp.buf.code_action, '[c]ode [a]ctions')
 
         if client.server_capabilities.documentFormattingProvider then
             --nmap('<leader>fl', vim.lsp.buf.format(), '[l]sp [f]ormat')

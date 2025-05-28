@@ -42,7 +42,7 @@ M.servers = function()
             }
         },
         cmake = {},
-        --gopls = {},
+        gopls = {},
         basedpyright = {},
         ruff = {
             init_options = {
@@ -57,7 +57,15 @@ M.servers = function()
         docker_compose_language_service = {},
         matlab_ls = {},
         ltex = {},
-        lua_ls = {},
+        lua_ls = {
+            settings = {
+                Lua = {
+                    diagnostics = {
+                        globals = {'vim'},
+                    },
+                },
+            },
+        },
 
 --        rust_analyzer = {
 --            settings = {
